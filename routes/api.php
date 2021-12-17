@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Jobs\CompanyCreated;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/teste', function () {
+    CompanyCreated::dispatch('teste@email.com')->onQueue('queue_email');
+    return response()->json(["message" => "success"]);
+});
+
 Route::get('/', function () {
     return response()->json(["message" => "success"]);
 });

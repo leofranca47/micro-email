@@ -15,7 +15,7 @@ services:
             - ./:/var/www
         depends_on:
             - redis
-            - queue_email
+            - queue
         networks:
             - email-network
 
@@ -48,7 +48,7 @@ services:
             - email-network
 
     # queue
-    queue_email:
+    queue:
         build:
             args:
                 user: leo
